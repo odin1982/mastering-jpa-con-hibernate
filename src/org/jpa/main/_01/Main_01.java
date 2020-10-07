@@ -18,9 +18,17 @@ public class Main_01 {
 		customer.setLastName("Araujo Barragan");
 		em.persist(customer);
 
+		Customer customer2 = new Customer();
+		customer2.setFirstName("Amaya");
+		customer2.setLastName("Araujo Hernandez");
+		em.persist(customer2);
+
 		em.getTransaction().commit();
 
 		Customer findObject = em.find(Customer.class, 1L);
-		System.out.println("customer ----> " + customer);
+		System.out.println("customer ----> " + findObject);
+
+		Customer findObject2 = em.find(Customer.class, 2L);
+		System.out.println("customer ----> " + findObject2);
 	}
 }
