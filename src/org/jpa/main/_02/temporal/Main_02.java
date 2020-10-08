@@ -1,6 +1,7 @@
 package org.jpa.main._02.temporal;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 import javax.persistence.EntityManager;
@@ -21,14 +22,14 @@ public class Main_02 {
 		customer.setLastName("Araujo Barragan");
 		customer.setSalario(BigDecimal.valueOf(20.5));
 		customer.setDeudas(BigDecimal.valueOf(1111111111.881234));
-		customer.setBirthday(Calendar.getInstance());
+		customer.setBirthday(LocalDate.now());
 		em.persist(customer);
 
 		Customer customer2 = new Customer();
 		customer2.setFirstName("Amaya");
 		customer2.setLastName("Araujo Hernandez");
 		customer2.setSalario(BigDecimal.valueOf(39.5));
-		customer2.setBirthday(Calendar.getInstance());
+		customer2.setBirthday(LocalDate.now());
 		em.persist(customer2);
 
 		Customer findObject = em.find(Customer.class, 1L);

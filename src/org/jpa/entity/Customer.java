@@ -1,7 +1,9 @@
 package org.jpa.entity;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * 
@@ -49,13 +49,14 @@ public class Customer {
 	@Column(name = "deudas",scale = 4)
 	private BigDecimal deudas;
 	
-	@Temporal(TemporalType.DATE)
 	@Column(name="birthday",nullable=false)
-	private Calendar birthday;
+	private LocalDate birthday;
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="reg_date",nullable=false,updatable=false)
-	private Calendar regDate = Calendar.getInstance();
+	private LocalDateTime regDate = LocalDateTime.now();
+	
+	@Column(name="localtimes")
+	private LocalTime localtime = LocalTime.now();
 
 	public Long getId() {
 		return id;
@@ -97,26 +98,35 @@ public class Customer {
 		this.deudas = deudas;
 	}
 
-	public Calendar getBirthday() {
+	public LocalDate getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Calendar birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 
-	public Calendar getRegDate() {
+	public LocalDateTime getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(Calendar regDate) {
+	public void setRegDate(LocalDateTime regDate) {
 		this.regDate = regDate;
+	}
+
+	public LocalTime getLocaltime() {
+		return localtime;
+	}
+
+	public void setLocaltime(LocalTime localtime) {
+		this.localtime = localtime;
 	}
 
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", salario=" + salario
-				+ ", deudas=" + deudas + ", birthday=" + birthday + ", regDate=" + regDate + "]";
+				+ ", deudas=" + deudas + ", birthday=" + birthday + ", regDate=" + regDate + ", localtime=" + localtime
+				+ "]";
 	}
 
 }
