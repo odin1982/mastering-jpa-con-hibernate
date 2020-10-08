@@ -7,10 +7,14 @@ import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.jpa.entity.enums.CustomerStatus;
 
 /**
  * 
@@ -18,6 +22,9 @@ import javax.persistence.Table;
  *	@Temporal(TemporalType.DATE) = Solo fecha
  *	@Temporal(TemporalType.TIME) = Solo la hora
  *	@Temporal(TemporalType.TIMESTAMP) = fecha y hora
+ *
+ *	@Enumerated(EnumType.STRING) = Inserta el nombre del ENUM
+ *	@Enumerated(EnumType.ORDINAL) = Inserta la posicion del ENUM
  */
 
 
@@ -57,6 +64,14 @@ public class Customer {
 	
 	@Column(name="localtimes")
 	private LocalTime localtime = LocalTime.now();
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="status_ordinal", nullable = false, length = 8)
+	private CustomerStatus status;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="status_string", nullable = false,length = 8)
+	private CustomerStatus status_string;
 
 	public Long getId() {
 		return id;
@@ -122,11 +137,26 @@ public class Customer {
 		this.localtime = localtime;
 	}
 
+	public CustomerStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(CustomerStatus status) {
+		this.status = status;
+	}
+
+	public CustomerStatus getStatus_string() {
+		return status_string;
+	}
+
+	public void setStatus_string(CustomerStatus status_string) {
+		this.status_string = status_string;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", salario=" + salario
 				+ ", deudas=" + deudas + ", birthday=" + birthday + ", regDate=" + regDate + ", localtime=" + localtime
-				+ "]";
+				+ ", status=" + status + ", status_string=" + status_string + "]";
 	}
-
 }
