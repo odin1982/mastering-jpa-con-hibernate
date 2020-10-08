@@ -13,21 +13,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.jpa.entity.enums.CustomerStatus;
 
 /**
  * 
- * @author odin
- *	@Temporal(TemporalType.DATE) = Solo fecha
- *	@Temporal(TemporalType.TIME) = Solo la hora
- *	@Temporal(TemporalType.TIMESTAMP) = fecha y hora
+ * @author odin @Temporal(TemporalType.DATE) = Solo
+ *         fecha @Temporal(TemporalType.TIME) = Solo la
+ *         hora @Temporal(TemporalType.TIMESTAMP) = fecha y hora
  *
- *	@Enumerated(EnumType.STRING) = Inserta el nombre del ENUM
- *	@Enumerated(EnumType.ORDINAL) = Inserta la posicion del ENUM
+ *         @Enumerated(EnumType.STRING) = Inserta el nombre del
+ *         ENUM @Enumerated(EnumType.ORDINAL) = Inserta la posicion del ENUM
  */
-
-
 
 @Entity
 @Table(name = "customers")
@@ -43,8 +41,6 @@ public class Customer {
 
 	@Column(name = "last_name", length = 50)
 	private String lastName;
-	
-	
 
 	// precision cuantos numeros tendra contando los decimales, scale= cuentos
 	// decimales tendra
@@ -53,25 +49,28 @@ public class Customer {
 
 	// precision cuantos numeros tendra contando los decimales, scale= cuentos
 	// decimales tendra
-	@Column(name = "deudas",scale = 4)
+	@Column(name = "deudas", scale = 4)
 	private BigDecimal deudas;
-	
-	@Column(name="birthday",nullable=false)
+
+	@Column(name = "birthday", nullable = false)
 	private LocalDate birthday;
-	
-	@Column(name="reg_date",nullable=false,updatable=false)
+
+	@Column(name = "reg_date", nullable = false, updatable = false)
 	private LocalDateTime regDate = LocalDateTime.now();
-	
-	@Column(name="localtimes")
+
+	@Column(name = "localtimes")
 	private LocalTime localtime = LocalTime.now();
-	
+
 	@Enumerated(EnumType.ORDINAL)
-	@Column(name="status_ordinal", nullable = false, length = 8)
+	@Column(name = "status_ordinal", nullable = false, length = 8)
 	private CustomerStatus status;
-	
+
 	@Enumerated(EnumType.STRING)
-	@Column(name="status_string", nullable = false,length = 8)
+	@Column(name = "status_string", nullable = false, length = 8)
 	private CustomerStatus status_string;
+
+	@Transient
+	private String fullName;
 
 	public Long getId() {
 		return id;
@@ -87,6 +86,7 @@ public class Customer {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+		setFullName(firstName + " " + lastName);
 	}
 
 	public String getLastName() {
@@ -95,6 +95,7 @@ public class Customer {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+		setFullName(firstName + " " + lastName);
 	}
 
 	public BigDecimal getSalario() {
@@ -153,10 +154,19 @@ public class Customer {
 		this.status_string = status_string;
 	}
 
+	public String getFullName() {
+		return fullName;
+	}
+
+	private void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", salario=" + salario
 				+ ", deudas=" + deudas + ", birthday=" + birthday + ", regDate=" + regDate + ", localtime=" + localtime
-				+ ", status=" + status + ", status_string=" + status_string + "]";
+				+ ", status=" + status + ", status_string=" + status_string + ", fullName=" + fullName + "]";
 	}
+
 }
