@@ -1,4 +1,4 @@
-package org.jpa.main._04.transients;
+package org.jpa.main._04.hashCodeEquals;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
