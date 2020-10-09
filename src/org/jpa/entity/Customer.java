@@ -42,9 +42,9 @@ public class Customer {
 	@Column(name = "last_name", length = 50)
 	private String lastName;
 
-	// precision cuantos numeros tendra contando los decimales, scale= cuentos
-	// decimales tendra
-	@Column(name = "salario", precision = 7, scale = 4)
+	// precision cuantos numeros tendra contando los decimales, 
+	// scale= cuentos decimales tendra
+	@Column(name = "salario",precision = 4,scale = 2)
 	private BigDecimal salario;
 
 	// precision cuantos numeros tendra contando los decimales, scale= cuentos
