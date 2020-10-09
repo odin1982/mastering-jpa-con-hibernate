@@ -1,15 +1,11 @@
 package org.jpa.main._04.transients;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Calendar;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.jpa.entity.Customer;
-import org.jpa.entity.enums.CustomerStatus;
 
 public class Main_05 {
 	public static void main(String[] args) {

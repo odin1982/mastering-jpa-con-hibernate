@@ -2,7 +2,6 @@ package org.jpa.main._04.hashCodeEquals;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
