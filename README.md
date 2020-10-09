@@ -57,3 +57,9 @@ Archivo principal de JPA
 # EntityManger
     Se crea apartir de la unidad de persistencia.
 
+# merge
+hazme un select con el where del id,administrala y despues actualizala.
+
+# detached
+
+
