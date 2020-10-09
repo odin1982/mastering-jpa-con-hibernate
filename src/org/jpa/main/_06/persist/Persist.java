@@ -1,4 +1,4 @@
-package org.jpa.main._06.entitymanager;
+package org.jpa.main._06.persist;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
