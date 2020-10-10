@@ -31,6 +31,18 @@ public class Persist {
 		customer.setStatus_string(CustomerStatus.ACTIVE);
 		em.persist(customer);
 		
+		Customer customer2 = new Customer();
+		customer2.setBirthday(LocalDate.now());
+		customer2.setDeudas(BigDecimal.TEN);
+		customer2.setFirstName("Amaya");
+		customer2.setLastName("Araujo Hernandez");
+		customer2.setLocaltime(LocalTime.now());
+		customer2.setRegDate(LocalDateTime.now());
+		customer2.setSalario(new BigDecimal(10.23));
+		customer2.setStatus(CustomerStatus.ACTIVE);
+		customer2.setStatus_string(CustomerStatus.ACTIVE);
+		em.persist(customer2);
+		
 		em.getTransaction().commit();
 		
 		System.out.println("Empleado ----> "+em.find(Customer.class, 1L));

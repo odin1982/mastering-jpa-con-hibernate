@@ -11,7 +11,6 @@
 			<property name="hibernate.show_sql" value="true"/>
 			<!-- JPA indica que va borrar y crear todas las entidades cada vez que se ejecute el main -->
 			<property name="javax.persistence.schema-generation.database.action" value="none"/>
-			<property name="javax.persistence.sql-load-script-source" value="META-INF/init.sql"/>
 		</properties>
 	</persistence-unit>
 </persistence>

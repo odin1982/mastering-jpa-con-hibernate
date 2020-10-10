@@ -64,3 +64,16 @@ Archivo principal de JPA
     Java Persistence Query Language
 
 
+# CICLO DE VIDA DE LAS ENTIDADES
+
+                (Persistence Context)
+new ------->    managed     ----------->    DB  
+    persist                 flush/commit
+                            find/query
+
+
+                            ----------->    DB
+                              removed
+
+                              
+
