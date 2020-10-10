@@ -23,7 +23,7 @@ public class OneToMany {
 		
 		for(int i=1;i<=10;i++) {
 			OrderLine line = new OrderLine();
-			line.setProduct("Product"+i);
+			//line.setProduct("Product"+i);
 			line.setQuantity(i*1d);
 			line.setUnitPrice(i*1000d);
 			order.addLine(line);
