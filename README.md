@@ -75,5 +75,13 @@ new ------->    managed     ----------->    DB
                             ----------->    DB
                               removed
 
+
+# Query
+
+    Se usa cuando no tenemos un tipo determinado que queremos recuperar, y typed query cuando si lo sabemos pero tambienlo podemos usar si no hay un objeto determinado.
+
+# Hints
+    Sugerencias para optimizar los queries
+
                               
 
