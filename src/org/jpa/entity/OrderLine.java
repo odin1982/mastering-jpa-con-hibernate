@@ -35,6 +35,9 @@ public class OrderLine {
 
 	@Column(name = "total", nullable = false)
 	private Double total = 0d;
+	
+	@Column(name="ctr")
+	private Integer ctr;
 
 	private void updateTotal() {
 		this.total = unitPrice * quantity;
@@ -87,6 +90,14 @@ public class OrderLine {
 
 	public void setTotal(Double total) {
 		this.total = total;
+	}
+
+	public Integer getCtr() {
+		return ctr;
+	}
+
+	public void setCtr(Integer ctr) {
+		this.ctr = ctr;
 	}
 
 }

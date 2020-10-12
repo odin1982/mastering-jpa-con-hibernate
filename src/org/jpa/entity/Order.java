@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.jpa.entity.enums.Status;
@@ -45,6 +46,7 @@ public class Order {
 	@Column(name = "total", nullable = false)
 	private Double total = 0d;
 
+	@OrderBy("ctr desc")
 	@OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
 	private List<OrderLine> lines;
 
