@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,8 @@ public class Order {
 	@Column(name = "id")
 	private Long id;
 
-	@ManyToOne
+	//LAZY = solo se carga cuando sea requerido
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_customer", nullable = false, updatable = false)
 	private Customer customer;
 

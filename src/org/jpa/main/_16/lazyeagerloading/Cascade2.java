@@ -1,4 +1,4 @@
-package org.jpa.main._16.cascade;
+package org.jpa.main._16.lazyeagerloading;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
