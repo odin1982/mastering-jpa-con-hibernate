@@ -67,7 +67,7 @@ public class TypedQuery {
 			.getResultList();
 		results.stream().forEach(x -> x.get("id"));
 		
-		
+		//native query
 		Object r = em.createNativeQuery("select now()").getSingleResult();
 		System.out.println(r);
 		

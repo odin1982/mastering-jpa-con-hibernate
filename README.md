@@ -83,5 +83,11 @@ new ------->    managed     ----------->    DB
 # Hints
     Sugerencias para optimizar los queries
 
+
+# Documentacion JPQL
+    https://docs.oracle.com/html/E13946_04/ejb3_langref.html
+    https://www.objectdb.com/   ---> solo para JPQL
+
+
                               
 

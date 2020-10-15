@@ -14,6 +14,7 @@ INSERT INTO customers (birthday,first_name,last_name,reg_date,status_string,sala
 INSERT INTO customers (birthday,first_name,last_name,reg_date,status_string,salario,deudas,localtimes,status_ordinal) VALUES(curdate(),'Hugo Esteban','Araujo Barragan',now(),'ACTIVE',98.98,234.23,now(),0);
 INSERT INTO orders(reg_date,status,total,fk_customer) VALUES (now(),'ACTIVO',2345,1);
 INSERT INTO orders(reg_date,status,total,fk_customer) VALUES (now(),'ACTIVO',1222,2);
+INSERT INTO orders(reg_date,status,total,fk_customer) VALUES (now(),'ACTIVO',1222,3);
 INSERT INTO order_lines(quantity,total,unit_price,fk_order,fk_product,ctr) VALUES(1,1,122,1,1,0);
 INSERT INTO order_lines(quantity,total,unit_price,fk_order,fk_product,ctr) VALUES(2,2,122,1,2,1);
 INSERT INTO order_lines(quantity,total,unit_price,fk_order,fk_product,ctr) VALUES(3,3,122,1,3,2);
