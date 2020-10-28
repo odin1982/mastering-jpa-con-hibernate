@@ -13,13 +13,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.jpa.entity.enums.Status;
 
 @Entity
 @Table(name = "products")
+@NamedQueries(value= {
+		@NamedQuery(name="Product.findByName",query="select p from Product p where UPPER(p.name) = UPPER(:name)")
+})
 public class Product {
 
 	@Id
@@ -38,12 +44,16 @@ public class Product {
 	private Status status = Status.ACTIVO;
 
 	@Column(name = "reg_date", nullable = false, updatable = false)
-	private LocalDateTime regDate;
+	private LocalDateTime regDate = LocalDateTime.now();
 
 	@ManyToMany
 	@JoinTable(name = "rel_prod_clas", joinColumns = { @JoinColumn(name = "fk_product") }, inverseJoinColumns = {
 			@JoinColumn(name = "fk_clasification") })
 	private List<Clasification> clasifications;
+	
+	@Lob
+	@Column(name="image")
+	private byte[] image;
 
 	public void addClasification(Clasification clasification) {
 		List<Clasification> clasifications = getClasifications();
@@ -99,6 +109,14 @@ public class Product {
 
 	public void setClasifications(List<Clasification> clasifications) {
 		this.clasifications = clasifications;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 }
