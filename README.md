@@ -89,5 +89,12 @@ new ------->    managed     ----------->    DB
     https://www.objectdb.com/   ---> solo para JPQL
 
 
+# N+1 QUERY
+    bajo performance, no exclusivo de jpa
+
+# NAMEDQUERIES
+    Querys que se ejecutan desde que arranca la aplicacion
+
+
                               
 

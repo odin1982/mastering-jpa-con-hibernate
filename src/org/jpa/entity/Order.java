@@ -15,15 +15,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NaturalIdCache;
 import org.jpa.entity.enums.Status;
 
 @Entity
 @Table(name = "orders")
+@NamedQueries(value= {
+		@NamedQuery(name="Order.orderByCustomer",query="select o from Order o where o.customer.id = :customerID"),
+		@NamedQuery(name="Order.findAll",query="select o from Order o")
+})
+@NamedNativeQueries(value= {
+		@NamedNativeQuery(name="Order.orderByCustomerNative",query="select o.* from orders o where o.fk_customer = :customerID")
+})
 public class Order {
 
 	@Id

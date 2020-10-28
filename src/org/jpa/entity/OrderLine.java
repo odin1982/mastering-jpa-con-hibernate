@@ -3,6 +3,7 @@ package org.jpa.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class OrderLine {
 	@JoinColumn(name = "fk_order", nullable = false, updatable = false)
 	private Order order;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "fk_product",nullable = false)
 	private Product product;
 
