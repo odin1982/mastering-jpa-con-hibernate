@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.jpa.entity.enums.CustomerStatus;
+import org.jpa.entity.enums.Status;
 
 /**
  * 
@@ -42,9 +44,9 @@ public class Customer {
 	@Column(name = "last_name", length = 50)
 	private String lastName;
 
-	// precision cuantos numeros tendra contando los decimales, 
+	// precision cuantos numeros tendra contando los decimales,
 	// scale= cuentos decimales tendra
-	@Column(name = "salario",precision = 4,scale = 2)
+	@Column(name = "salario", precision = 4, scale = 2)
 	private BigDecimal salario;
 
 	// precision cuantos numeros tendra contando los decimales, scale= cuentos
@@ -63,11 +65,14 @@ public class Customer {
 
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "status_ordinal", nullable = false, length = 8)
-	private CustomerStatus status;
+	private CustomerStatus status = CustomerStatus.ACTIVE;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status_string", nullable = false, length = 8)
-	private CustomerStatus status_string;
+	private CustomerStatus status_string = CustomerStatus.ACTIVE;
+
+	@Embedded
+	private Image avatar;
 
 	@Transient
 	private String fullName;
@@ -160,6 +165,14 @@ public class Customer {
 
 	private void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	public Image getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(Image avatar) {
+		this.avatar = avatar;
 	}
 
 	@Override

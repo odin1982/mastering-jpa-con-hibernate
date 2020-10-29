@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -51,9 +52,8 @@ public class Product {
 			@JoinColumn(name = "fk_clasification") })
 	private List<Clasification> clasifications;
 	
-	@Lob
-	@Column(name="image")
-	private byte[] image;
+	@Embedded
+	private Image image;
 
 	public void addClasification(Clasification clasification) {
 		List<Clasification> clasifications = getClasifications();
@@ -111,12 +111,14 @@ public class Product {
 		this.clasifications = clasifications;
 	}
 
-	public byte[] getImage() {
+	public Image getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(Image image) {
 		this.image = image;
 	}
+	
+	
 
 }
